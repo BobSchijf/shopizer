@@ -24,7 +24,7 @@ import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ProductRepositoryImplTest extends com.salesmanager.test.common.AbstractSalesManagerCoreTestCase{
 

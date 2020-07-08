@@ -36,37 +36,16 @@ public class BraintreePayment implements PaymentModule {
 		
 		
 		Map<String,String> keys = integrationConfiguration.getIntegrationKeys();
-		
-		//validate integrationKeys['merchant_id']
-		if(keys==null || StringUtils.isBlank(keys.get("merchant_id"))) {
-			errorFields = new ArrayList<String>();
-			errorFields.add("merchant_id");
-		}
-		
-		//validate integrationKeys['public_key']
-		if(keys==null || StringUtils.isBlank(keys.get("public_key"))) {
-			if(errorFields==null) {
+		String[] idsAndKeys = new String[] {"merchant_id", "public_key", "private_key", "tokenization_key" };
+
+		//validate integrationKeys['merchant_id'], ['public_key'], ['private_key'], ['tokenization_key']
+		for(int i = 0; i <4; i++) {
+			if(keys==null || StringUtils.isBlank(keys.get(idsAndKeys[i]))) {
 				errorFields = new ArrayList<String>();
+				errorFields.add(idsAndKeys[i]);
 			}
-			errorFields.add("public_key");
 		}
-		
-		//validate integrationKeys['private_key']
-		if(keys==null || StringUtils.isBlank(keys.get("private_key"))) {
-			if(errorFields==null) {
-				errorFields = new ArrayList<String>();
-			}
-			errorFields.add("private_key");
-		}
-		
-		//validate integrationKeys['tokenization_key']
-		if(keys==null || StringUtils.isBlank(keys.get("tokenization_key"))) {
-			if(errorFields==null) {
-				errorFields = new ArrayList<String>();
-			}
-			errorFields.add("tokenization_key");
-		}
-		
+
 		
 		if(errorFields!=null) {
 			IntegrationException ex = new IntegrationException(IntegrationException.ERROR_VALIDATION_SAVE);

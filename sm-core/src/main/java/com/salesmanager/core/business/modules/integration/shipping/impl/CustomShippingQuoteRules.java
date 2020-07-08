@@ -103,8 +103,8 @@ public class CustomShippingQuoteRules implements ShippingQuoteModule {
 			sizeList.add(pack.getShippingWeight());
 			sizeList.add(pack.getShippingLength());
 			Double maxSize = (Double)Collections.max(sizeList);
-			if(size==null || maxSize.doubleValue() > size.doubleValue()) {
-				size = maxSize.doubleValue();
+			if(size==null || maxSize > size) {
+				size = maxSize;
 			}
 		}
 		

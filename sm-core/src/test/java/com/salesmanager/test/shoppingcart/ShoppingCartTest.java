@@ -101,7 +101,7 @@ public class ShoppingCartTest extends com.salesmanager.test.common.AbstractSales
 	    ProductOption option = new ProductOption();
 	    option.setMerchantStore(store);
 	    option.setCode("color");
-	    option.setProductOptionType(ProductOptionType.Radio.name());
+	    option.setProductOptionType(ProductOptionType.RADIO.name());
 	    
 	    ProductOptionDescription optionDescription = new ProductOptionDescription();
 	    optionDescription.setLanguage(en);

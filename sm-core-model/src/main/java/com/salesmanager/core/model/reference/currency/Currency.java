@@ -69,7 +69,7 @@ public class Currency extends SalesManagerEntity<Long, Currency> implements Seri
 	}
 	
 	public String getCode() {
-		if (currency.getCurrencyCode() != code) {
+		if (currency.getCurrencyCode().equals(code)) {
 			return currency.getCurrencyCode();
 		}
 		return code;

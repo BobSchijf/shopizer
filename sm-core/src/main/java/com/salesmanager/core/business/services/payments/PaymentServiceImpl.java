@@ -615,7 +615,7 @@ public class PaymentServiceImpl implements PaymentService {
 	throws ServiceException {
 
 		//TODO implement
-		if(CreditCardType.MASTERCARD.equals(creditCard.name())) {
+		if(CreditCardType.MASTERCARD.toString().equals(creditCard.name())) {
 			if (number.length() != 16
 					|| Integer.parseInt(number.substring(0, 2)) < 51
 					|| Integer.parseInt(number.substring(0, 2)) > 55) {
@@ -624,7 +624,7 @@ public class PaymentServiceImpl implements PaymentService {
 			}
 		}
 		
-		if(CreditCardType.VISA.equals(creditCard.name())) {
+		if(CreditCardType.VISA.toString().equals(creditCard.name())) {
 			if ((number.length() != 13 && number.length() != 16)
 					|| Integer.parseInt(number.substring(0, 1)) != 4) {
 				ServiceException ex = new ServiceException(ServiceException.EXCEPTION_VALIDATION,"Invalid card number","messages.error.creditcard.number");
@@ -632,7 +632,7 @@ public class PaymentServiceImpl implements PaymentService {
 			}
 		}
 		
-		if(CreditCardType.AMEX.equals(creditCard.name())) {
+		if(CreditCardType.AMEX.toString().equals(creditCard.name())) {
 			if (number.length() != 15
 					|| (Integer.parseInt(number.substring(0, 2)) != 34 && Integer
 							.parseInt(number.substring(0, 2)) != 37)) {
@@ -641,7 +641,7 @@ public class PaymentServiceImpl implements PaymentService {
 			}
 		}
 		
-		if(CreditCardType.DINERS.equals(creditCard.name())) {
+		if(CreditCardType.DINERS.toString().equals(creditCard.name())) {
 			if (number.length() != 14
 					|| ((Integer.parseInt(number.substring(0, 2)) != 36 && Integer
 							.parseInt(number.substring(0, 2)) != 38)
@@ -652,7 +652,7 @@ public class PaymentServiceImpl implements PaymentService {
 			}
 		}
 		
-		if(CreditCardType.DISCOVERY.equals(creditCard.name())) {
+		if(CreditCardType.DISCOVERY.toString().equals(creditCard.name())) {
 			if (number.length() != 16
 					|| Integer.parseInt(number.substring(0, 5)) != 6011) {
 				ServiceException ex = new ServiceException(ServiceException.EXCEPTION_VALIDATION,"Invalid card number","messages.error.creditcard.number");

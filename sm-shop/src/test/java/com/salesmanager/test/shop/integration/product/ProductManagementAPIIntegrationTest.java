@@ -208,7 +208,7 @@ public class ProductManagementAPIIntegrationTest extends ServicesTestSupport {
         final PersistableProductOption option = new PersistableProductOption();
         option.setOrder(1);
         option.setCode("color");
-        option.setType(ProductOptionType.Select.name());
+        option.setType(ProductOptionType.SELECT.name());
         option.setDescriptions(descriptions);
 
         final ObjectWriter writer = new ObjectMapper().writer().withDefaultPrettyPrinter();

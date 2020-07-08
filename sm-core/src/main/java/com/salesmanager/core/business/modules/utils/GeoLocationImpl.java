@@ -52,8 +52,8 @@ public class GeoLocationImpl implements GeoLocation {
 				throw new ServiceException(e);
 			}
 
-		
-			return address;
+
+		return address;
 		
 		
 	}

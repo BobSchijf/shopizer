@@ -336,13 +336,7 @@ public class ContentServiceImpl extends SalesManagerEntityServiceImpl<Long, Cont
     Assert.notNull(merchantStoreCode, "Merchant store ID can not be null");
     Assert.notNull(fileName, "File name can not be null");
 
-    if (fileContentType.name().equals(FileContentType.IMAGE.name())
-        || fileContentType.name().equals(FileContentType.STATIC_FILE.name())) {
-      return contentFileManager.getFile(merchantStoreCode, fileContentType, fileName);
-
-    } else {
-      return contentFileManager.getFile(merchantStoreCode, fileContentType, fileName);
-    }
+    return contentFileManager.getFile(merchantStoreCode, fileContentType, fileName);
 
 
   }

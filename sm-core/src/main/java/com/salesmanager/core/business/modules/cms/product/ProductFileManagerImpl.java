@@ -213,8 +213,11 @@ public class ProductFileManagerImpl extends ProductFileManager {
         // output.flush();
         // output.close();
 
-        tempLarge.delete();
+        boolean isDeleted = tempLarge.delete();
 
+        if(!isDeleted) {
+          System.out.println("not Deleted");
+        }
         // now upload original
 
 

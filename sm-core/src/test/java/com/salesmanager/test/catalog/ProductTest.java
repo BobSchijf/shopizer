@@ -367,7 +367,7 @@ public class ProductTest extends com.salesmanager.test.common.AbstractSalesManag
 	    ProductOption color = new ProductOption();
 	    color.setMerchantStore(store);
 	    color.setCode("COLOR");
-	    color.setProductOptionType(ProductOptionType.Radio.name());
+	    color.setProductOptionType(ProductOptionType.RADIO.name());
 	    
 	    ProductOptionDescription optionDescription = new ProductOptionDescription();
 	    optionDescription.setLanguage(en);
@@ -386,7 +386,7 @@ public class ProductTest extends com.salesmanager.test.common.AbstractSalesManag
         ProductOption size = new ProductOption();
         size.setMerchantStore(store);
         size.setCode("SIZE");
-        size.setProductOptionType(ProductOptionType.Radio.name());
+        size.setProductOptionType(ProductOptionType.RADIO.name());
         
         ProductOptionDescription sizeDescription = new ProductOptionDescription();
         sizeDescription.setLanguage(en);

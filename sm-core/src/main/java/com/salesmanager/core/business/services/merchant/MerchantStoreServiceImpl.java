@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import javax.inject.Inject;
 
+import org.elasticsearch.ResourceNotFoundException;
 import org.jsoup.helper.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -75,7 +76,7 @@ public class MerchantStoreServiceImpl extends SalesManagerEntityServiceImpl<Inte
 	@Override
 	public Page<MerchantStore> listAll(Optional<String> storeName, int page, int count) throws ServiceException {
 		String store = null;
-		if (storeName != null && storeName.isPresent()) {
+		if (storeName.isPresent()) {
 			store = storeName.get();
 		}
 		Pageable pageRequest = PageRequest.of(page, count);
@@ -92,7 +93,7 @@ public class MerchantStoreServiceImpl extends SalesManagerEntityServiceImpl<Inte
 	public Page<MerchantStore> listAllRetailers(Optional<String> storeName, int page, int count)
 			throws ServiceException {
 		String store = null;
-		if (storeName != null && storeName.isPresent()) {
+		if (storeName.isPresent()) {
 			store = storeName.get();
 		}
 		Pageable pageRequest = PageRequest.of(page, count);
@@ -145,7 +146,7 @@ public class MerchantStoreServiceImpl extends SalesManagerEntityServiceImpl<Inte
 	public Page<MerchantStore> listByGroup(Optional<String> storeName, String code, int page, int count) throws ServiceException {
 		
 		String name = null;
-		if (storeName != null && storeName.isPresent()) {
+		if (storeName.isPresent()) {
 			name = storeName.get();
 		}
 
@@ -155,10 +156,9 @@ public class MerchantStoreServiceImpl extends SalesManagerEntityServiceImpl<Inte
 
 		
 		Pageable pageRequest = PageRequest.of(page, count);
-		
-		
-		Page<MerchantStore> stores = pageableMerchantRepository.listByGroup(code, id.get(), name, pageRequest);
-		return stores;
+
+
+		return pageableMerchantRepository.listByGroup(code, id.orElseThrow(() -> new ResourceNotFoundException(Integer.class.getSimpleName(), store.getId())), name, pageRequest);
 		
 		
 	}
@@ -169,7 +169,7 @@ public class MerchantStoreServiceImpl extends SalesManagerEntityServiceImpl<Inte
 		MerchantStore store = getByCode(code);//if exist
 		Optional<Integer> id = Optional.ofNullable(store.getId());
 		
-		List<MerchantStore> stores = merchantRepository.listByGroup(code, id.get());
+		List<MerchantStore> stores = merchantRepository.listByGroup(code, id.orElseThrow(() -> new ResourceNotFoundException(Integer.class.getSimpleName(), store.getId())));
 		
 		
 		return stores.size() > 0;

@@ -102,8 +102,8 @@ public class ProductImageCropUtils {
 		cropAreaHeight = specificationsHeight;
 		
 		
-		double factorWidth = new Integer(width).doubleValue() / new Integer(specificationsWidth).doubleValue();
-		double factorHeight = new Integer(height).doubleValue() / new Integer(specificationsHeight).doubleValue();
+		double factorWidth = (double) width / (double) specificationsWidth;
+		double factorHeight = (double) height / (double) specificationsHeight;
 
 		double factor = factorWidth;
 		

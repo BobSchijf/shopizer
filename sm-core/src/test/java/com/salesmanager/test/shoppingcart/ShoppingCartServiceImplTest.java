@@ -125,7 +125,7 @@ public class ShoppingCartServiceImplTest extends com.salesmanager.test.common.Ab
         ProductOption option = new ProductOption();
         option.setMerchantStore(store);
         option.setCode("clockwork");
-        option.setProductOptionType(ProductOptionType.Radio.name());
+        option.setProductOptionType(ProductOptionType.RADIO.name());
 
         ProductOptionDescription optionDescription = new ProductOptionDescription();
         optionDescription.setLanguage(en);

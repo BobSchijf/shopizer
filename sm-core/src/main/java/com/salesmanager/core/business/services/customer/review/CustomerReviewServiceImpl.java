@@ -60,7 +60,7 @@ public class CustomerReviewServiceImpl extends
 
 		
 		BigDecimal totalRating = averageRating.multiply(new BigDecimal(count));
-		totalRating = totalRating.add(new BigDecimal(review.getReviewRating()));
+		totalRating = totalRating.add(BigDecimal.valueOf(review.getReviewRating()));
 		
 		count = count + 1;
 		double avg = totalRating.doubleValue() / count.intValue();
