@@ -72,7 +72,24 @@ public class ProductPriceUtilsTest extends com.salesmanager.test.common.Abstract
     public void getPriceTest() throws ServiceException {
         Mockito.when(product.getAvailabilities()).thenReturn(availabilities);
         BigDecimal expectedPrice = new BigDecimal(29.99);
-        Assert.assertEquals(productPriceUtils.getPrice(store, product, locale), expectedPrice);
+        Assert.assertEquals(expectedPrice, productPriceUtils.getPrice(store, product, locale));
+    }
+
+    @Test
+    public void getAdminFormatedAmountTest() throws Exception {
+        store = Mockito.mock(MerchantStore.class);
+        BigDecimal input = new BigDecimal("1299.99");
+        String expectedResult = "1,299.99";
+        Assert.assertEquals(expectedResult, productPriceUtils.getAdminFormatedAmount(store, input));
+    }
+
+    @Test
+    public void getAmountTest() throws Exception {
+        String input = "1,299.99";
+        BigDecimal expectedResult = new BigDecimal("1299.99");
+
+        Assert.assertEquals(expectedResult, productPriceUtils.getAmount(input));
+
     }
 
 }
